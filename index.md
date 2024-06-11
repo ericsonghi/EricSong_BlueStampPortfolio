@@ -50,7 +50,7 @@ For your second milestone, explain what you've worked on since your previous mil
 
 # Starter Project
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NTk1sGW9OV4?si=5kR27X8DwJMixnDb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[[<iframe width="560" height="315" src="https://www.youtube.com/embed/NTk1sGW9OV4?si=5kR27X8DwJMixnDb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>](https://www.youtube.com/embed/NTk1sGW9OV4?si=5kR27X8DwJMixnDb)](https://www.youtube.com/embed/NTk1sGW9OV4?si=5kR27X8DwJMixnDb)
 
 # explanation stuff
 For your first milestone, describe what your project is and how you plan to build it. You can include:
