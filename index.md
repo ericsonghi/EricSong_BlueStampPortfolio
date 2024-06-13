@@ -1,5 +1,5 @@
 # Ball Tracker Robot
-From glowing bugs to AI robots, my journey at BlueStamp has been filled with adversity and opportunity. 
+From glowing bugs to AI robots, my journey at BlueStamp has been filled with adversity and opportunity. The Ball Tracker Robot works by detecting a red ball using AI to determine its next course of action
 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
@@ -14,7 +14,7 @@ From glowing bugs to AI robots, my journey at BlueStamp has been filled with adv
 
 # Second Milestone
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y(https://www.youtube.com/embed/NTk1sGW9OV4?si=9ZicSQZY8JYFDKma)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # First Milestone
 
@@ -22,24 +22,14 @@ For my first milestone, I have decided to finish setting up the hardware require
 
 
 # Starter Project
+<iframe width="560" height="315" src="[https://www.youtube.com/embed/F7M7imOVGug](https://www.youtube.com/embed/y3VAmNlER5Y)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Video</title>
-</head>
-<body>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/NTk1sGW9OV4?si=kQp23k190RkAWxkr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</body>
-</html>
 
 My starter project is the Weevil Eyes, which is a light-detecting bug that glows depending on the surrounding light. If the environment is dark, then the lights glow up. For this project, there weren't any big challenges due to the lack of coding and complex steps. Essentially, the bug works by sensing the surrounding light with a sensor at the bottom. If there is light, that signal will go towards the transistor, which is like a switch. When there is light, the transistor will make sure that the LEDs do not light up. However, if there isn't light, the transistor will send electricity to the resistors, which resist electricity to ensure that the LEDs are not fried. And as electricity goes through the resistors and towards the LEDs, the LEDs then illuminate.
 
 # Schematics 
 
-# Code
+# Code 
 
 ```c++
 void setup() {
