@@ -6,7 +6,7 @@ From glowing bugs to AI robots, my journey at BlueStamp has been filled with adv
 |:--:|:--:|:--:|:--:|
 | Eric S | Lowell HS | Electrical Engineering | Incoming Sophomore
 
-![Headstone Image](Eric_S.HEIC)
+![Headstone Image](branding/Eric_S.HEIC)
   
 <!---# Final Milestone
 
