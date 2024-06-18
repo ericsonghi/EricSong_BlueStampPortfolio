@@ -18,7 +18,26 @@ From glowing bugs to AI robots, my journey at BlueStamp has been filled with adv
 --->
 # First Milestone
 
-For my first milestone, I have decided to finish setting up the hardware required to operate my robot. Essentially, the chassis, or the clear glass with wheels attached, strings together the other parts, allowing the robot to move. The Arduino and Raspberry Pi, both situated on top of the chassis, allow electricity to spread to other parts and receive code. Combined with the HC-SR04 sensors on the front, my robot will eventually be able to detect other objects and move accordingly. As for obstacles, one I have faced is the instructions manual for the chassis, which was poorly designed. The instructions stated to put screws a certain way, but that would be impossible because there wasn't enough room to use a nut to keep it in place. However, I solved this problem by simply changing the direction the screws faced. As for the future, I plan to start my code soon.
+
+# Summary
+For my first milestone, I have decided to finish setting up the hardware required to operate my robot. Essentially, the chassis, or the clear glass with wheels attached, strings together the other parts, allowing the robot to move. The Arduino and Raspberry Pi, both situated on top of the chassis, allow electricity to spread to other parts and receive code. Combined with the HC-SR04 sensors on the front, my robot will eventually be able to detect other objects and move accordingly.
+#Materials Used
+
+# Materials Used
+Glass Chassis  Wheels (2 front 1 back)
+HC-SR4 Sensors + the corresponding glass parts
+Raspberry Pi Camera Module
+Raspberry Pi Module 4
+L298N Motor Driver
+Breadboard
+Motors x2
+Screws, nuts
+Female-to-female jumper wires
+# Challenges
+1. The instructions for installing the glass chassis weren't super clear, especially with the installation of screws. The nuts for the screws wouldn't screw on because the glass chassis was in the way. However, this was solved by simply changing the direction the screws faced.
+
+# What's Next
+For the future, I hope to start my code soon and maybe tidy up my project, especially the wires.
 
 
 # Starter Project
