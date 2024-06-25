@@ -1,5 +1,5 @@
 # Ball Tracker Robot
-From glowing bugs to AI robots, my journey at BlueStamp has been filled with adversity and opportunity. The Ball Tracker Robot works by detecting a red ball using AI to determine its next course of action
+The Ball Tracker Robot is a self-driving robot that moves based on the objects it detects, while following a red ball.
 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
