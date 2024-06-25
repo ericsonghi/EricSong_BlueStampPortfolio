@@ -18,22 +18,23 @@ From glowing bugs to AI robots, my journey at BlueStamp has been filled with adv
 --->
 # First Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EjweVmvLvAc?si=SrWfulnb5zmT4sY9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-### Summary
+###Summary
 For my first milestone, I have decided to finish setting up the hardware required to operate my robot. Essentially, the chassis, or the clear glass with wheels attached, strings together the other parts, allowing the robot to move. The Arduino and Raspberry Pi, both situated on top of the chassis, allow electricity to spread to other parts and receive code. Combined with the HC-SR04 sensors on the front, my robot will eventually be able to detect other objects and move accordingly.
-#Materials Used
 
 ### Materials Used
-Glass Chassis  Wheels (2 front 1 back)
-HC-SR04 Sensors + the corresponding glass parts
-Raspberry Pi Camera Module
-Raspberry Pi Module 4
-L298N Motor Driver
-Breadboard
-Motors x2
-Screws, nuts
-Female-to-female jumper wires
+- Glass Chassis  Wheels (2 front 1 back)
+- HC-SR04 Sensors + the corresponding glass parts
+- Raspberry Pi Camera Module
+- Raspberry Pi Module 4
+- L298N Motor Driver
+- Breadboard
+- Motors x2
+- Screws, nuts
+- Female-to-female jumper wires
 ### Challenges
-1. The instructions for installing the glass chassis weren't super clear, especially with the installation of screws. The nuts for the screws wouldn't screw on because the glass chassis was in the way. However, this was solved by simply changing the direction the screws faced. Also, I had absolutely no idea what to do due to the unclear instructions and inaccurate wiring schematics so I had to figure out a lot of things on my own, which took a bit of time. Finally, there were a lot of wires to deal with since each sensor (x3) had a total of four wires, so my robot looked extremely messy.
+- The instructions for installing the glass chassis weren't super clear, especially with the installation of screws. The nuts for the screws wouldn't screw on because the glass chassis was in the way. However, this was solved by simply changing the direction the screws faced.
+- I had absolutely no idea what to do due to the unclear instructions and inaccurate wiring schematics so I had to figure out a lot of things on my own, which took a bit of time.
+- There were a lot of wires to deal with since each sensor (x3) had a total of four wires, so my robot looked extremely messy. I solved this issue by rearranging the position of wires and replacing longer wires with shorter wires.
 
 ### What's Next
 In the future, I hope to continue my code and tidy up my robot further.
