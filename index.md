@@ -42,7 +42,10 @@ For my first milestone, I have decided to finish setting up the hardware require
 In the future, I hope to continue my code and tidy up my robot further.
 
 ## Hardware Schematic
-  <img src="png2jpg.zip" alt="Headstone Image" height=350>
+  <img src="file.jpg" alt="Headstone Image" height=350>
+
+  - Left Trig (GPIO 16), Left Echo (GPIO 9)
+  - Center Trig (GPIO 26), Center Echo (GPIO 11)
 
 
 # Starter Project
