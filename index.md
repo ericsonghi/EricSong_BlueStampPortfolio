@@ -1,5 +1,5 @@
 # Ball Tracker Robot
-The Ball Tracker Robot is a self-driving robot that moves based on the objects it detects, while following a red ball.
+The Ball Tracker Robot is a self-driving robot that moves based on the objects it detects while following a red ball.
 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
@@ -10,12 +10,18 @@ The Ball Tracker Robot is a self-driving robot that moves based on the objects i
   
 <!---# Final Milestone
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>1 --->
 
 # Second Milestone
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y(https://www.youtube.com/embed/NTk1sGW9OV4?si=9ZicSQZY8JYFDKma)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
---->
+### Summary
+For my second milestone, I wanted to set up the PiCamera to be able to not only detect a red ball but also put a green box around it.
+
+### Challenges
+- I had little experience in Python so writing the code was difficult
+- 
+### What's Next
+
 # First Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EjweVmvLvAc?si=SrWfulnb5zmT4sY9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
