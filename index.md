@@ -41,6 +41,9 @@ For my first milestone, I have decided to finish setting up the hardware require
 ### What's Next
 In the future, I hope to continue my code and tidy up my robot further.
 
+## Hardware Schematic
+  <img src="png2jpg.zip" alt="Headstone Image" height=350>
+
 
 # Starter Project
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NTk1sGW9OV4?si=3lOBwtOGQsa74cHu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
