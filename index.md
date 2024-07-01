@@ -15,12 +15,18 @@ The Ball Tracker Robot is a self-driving robot that moves based on the objects i
 # Second Milestone
 
 ### Summary
-For my second milestone, I wanted to set up the PiCamera to be able to not only detect a red ball but also put a green box around it.
+For my second milestone, I wanted to set up the PiCamera to be able to not only detect a red ball but also put a green box around it. The program works exactly as it sounds. The PiCamera detects the ball by finding colors within a certain range and putting a box around it. Also, my code makes sure that only the largest object fitting those criteria is actually boxed, preventing other red objects from being focused on.
 
+### Code
+```
+
+```
 ### Challenges
 - I had little experience in Python so writing the code was difficult
-- 
+- I had to set up a lot of software in order to begin coding so that took a bit of time
+
 ### What's Next
+I hope to begin my milestone 3 as soon as I can which is finishing the rest of the code and getting the robot to automatically detect the red ball and move towards it.
 
 # First Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EjweVmvLvAc?si=SrWfulnb5zmT4sY9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -48,7 +54,7 @@ For my first milestone, I have decided to finish setting up the hardware require
 In the future, I hope to continue my code and tidy up my robot further.
 
 ## Hardware Schematic
-  <img src="file.jpg" alt="Headstone Image" height=350>
+  <img src="file.jpg" alt="Headstone Image" height=500>
 
   - Left Trig (GPIO 16), Left Echo (GPIO 9)
   - Center Trig (GPIO 26), Center Echo (GPIO 11)
