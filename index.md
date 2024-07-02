@@ -13,13 +13,49 @@ The Ball Tracker Robot is a self-driving robot that moves based on the objects i
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>1 --->
 
 # Second Milestone
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-geuLVvwCNM?si=ZdY8bKr4BySobwla&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ### Summary
 For my second milestone, I wanted to set up the PiCamera to be able to not only detect a red ball but also put a green box around it. The program works exactly as it sounds. The PiCamera detects the ball by finding colors within a certain range and putting a box around it. Also, my code makes sure that only the largest object fitting those criteria is actually boxed, preventing other red objects from being focused on.
 
 ### Code
 ```
+from picamera2 import Picamera2
+import cv2
+import time
+import numpy as np
 
+picam2 = Picamera2()
+
+picam2.start()
+
+time.sleep(2)
+
+cv2.namedWindow('cheesecam', cv2.WINDOW_NORMAL)
+lower_red = np.array([95, 150, 150])
+upper_red = np.array([160, 255, 255])
+
+while True:
+    frame = picam2.capture_array()
+
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+    mask = cv2.inRange(hsv, lower_red, upper_red)
+    
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    
+    if contours:
+        largest_contour = max(contours, key=cv2.contourArea)
+        x, y, w, h = cv2.boundingRect(largest_contour)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    
+    cv2.imshow('cheesecam', frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+picam2.stop()
+cv2.destroyAllWindows()
 ```
 ### Challenges
 - I had little experience in Python so writing the code was difficult
