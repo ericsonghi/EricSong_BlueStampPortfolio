@@ -8,9 +8,16 @@ The Ball Tracker Robot is a self-driving robot that moves based on the objects i
 
   <img src="ericshead.jpg" alt="Headstone Image" height=400>
   
-<!---# Final Milestone
+# Final Milestone
+### Summary
+For my final milestone, I completed the robot which allowed it to track a ball and follow it. Whenever the PiCamera detects a ball, the robot will move toward it unless the ball is too close. If the ball is towards the camera's right, the robot will turn until it faces the ball directly. Also, if the ball rolls out of view from the PiCamera, the robot will automatically turn in the direction the ball was last seen.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>1 --->
+### Code
+
+### Challenges
+- I am unfamiliar with coding so this whole process was difficult
+- My driver board wasn't getting enough power and it took a while for me to find the solution
+- 
 
 # Second Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-geuLVvwCNM?si=ZdY8bKr4BySobwla&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
