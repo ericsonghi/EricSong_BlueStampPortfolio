@@ -13,11 +13,196 @@ The Ball Tracker Robot is a self-driving robot that moves based on the objects i
 For my final milestone, I completed the robot which allowed it to track a ball and follow it. Whenever the PiCamera detects a ball, the robot will move toward it unless the ball is too close. If the ball is towards the camera's right, the robot will turn until it faces the ball directly. Also, if the ball rolls out of view from the PiCamera, the robot will automatically turn in the direction the ball was last seen.
 
 ### Code
+<details>
+  <summary>Click to expand/collapse the Python code</summary>
+  
+```python
+import time
+import cv2
+import numpy as np
+from picamera2 import Picamera2
+import RPi.GPIO as GPIO
+
+lower_range = 213
+upper_range = 426 
+
+GPIO.setmode(GPIO.BCM)
+
+motor1B = 6  # LEFT motor
+motor1E = 5
+motor2B = 22  # RIGHT motor
+motor2E = 23
+
+en_b = 24
+
+GPIO.setup(motor1B, GPIO.OUT)
+GPIO.setup(motor1E, GPIO.OUT)
+GPIO.setup(motor2B, GPIO.OUT)
+GPIO.setup(motor2E, GPIO.OUT)
+
+GPIO.setup(en_a, GPIO.OUT)
+GPIO.setup(en_b, GPIO.OUT)
+
+power_a = GPIO.PWM(en_a, 180)
+power_a.start(70)
+
+power_b = GPIO.PWM(en_b, 180)
+power_b.start(70)
+
+def forward():
+    GPIO.output(motor1B, GPIO.HIGH)
+    GPIO.output(motor1E, GPIO.LOW)
+    GPIO.output(motor2B, GPIO.HIGH)
+    GPIO.output(motor2E, GPIO.LOW)
+
+def reverse():
+    GPIO.output(motor1B, GPIO.LOW)
+    GPIO.output(motor1E, GPIO.HIGH)
+    GPIO.output(motor2B, GPIO.LOW)
+    GPIO.output(motor2E, GPIO.HIGH)
+
+def leftturn():
+    GPIO.output(motor1B, GPIO.LOW)
+    GPIO.output(motor1E, GPIO.LOW)
+    GPIO.output(motor2B, GPIO.HIGH)
+    GPIO.output(motor2E, GPIO.LOW)
+
+def rightturn():
+    GPIO.output(motor1B, GPIO.HIGH)
+    GPIO.output(motor1E, GPIO.LOW)
+    GPIO.output(motor2B, GPIO.LOW)
+    GPIO.output(motor2E, GPIO.LOW)
+
+def stop():
+    GPIO.output(motor1B, GPIO.LOW)
+    GPIO.output(motor1E, GPIO.LOW)
+    GPIO.output(motor2B, GPIO.LOW)
+    GPIO.output(motor2E, GPIO.LOW)
+
+def sharp_left():
+    GPIO.output(motor1B, GPIO.LOW)
+    GPIO.output(motor1E, GPIO.HIGH)
+    GPIO.output(motor2B, GPIO.HIGH)
+    GPIO.output(motor2E, GPIO.LOW)
+
+def sharp_right():
+    GPIO.output(motor1B, GPIO.HIGH)
+    GPIO.output(motor1E, GPIO.LOW)
+    GPIO.output(motor2B, GPIO.LOW)
+    GPIO.output(motor2E, GPIO.HIGH)
+
+def back_left():
+    GPIO.output(motor1B, GPIO.LOW)
+    GPIO.output(motor1E, GPIO.LOW)
+    GPIO.output(motor2B, GPIO.LOW)
+    GPIO.output(motor2E, GPIO.HIGH)
+
+def back_right():
+    GPIO.output(motor1B, GPIO.LOW)
+    GPIO.output(motor1E, GPIO.HIGH)
+    GPIO.output(motor2B, GPIO.LOW)
+    GPIO.output(motor2E, GPIO.LOW)
+
+picamera = Picamera2()
+picamera.configure(picamera.create_preview_configuration(main={"size": (640, 480)}))
+picamera.start()
+
+colour = (0, 255, 0)
+font = cv2.FONT_HERSHEY_SIMPLEX
+origin = (50, 50)
+scale = 1
+thickness = 2
+
+def apply_timestamp(frame):
+    timestamp = time.strftime("%Y-%m-%d %X")
+    cv2.putText(frame, timestamp, origin, font, scale, colour, thickness)
+
+def detect_red_ball(frame):
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+    lower_red = np.array([150, 140, 1])
+    upper_red = np.array([190, 255, 255])
+
+    mask = cv2.inRange(hsv, lower_red, upper_red)
+
+    mask = cv2.erode(mask, None, iterations=2)
+    mask = cv2.dilate(mask, None, iterations=2)
+
+    contours, _ = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+    center = None
+
+    if len(contours) > 0:
+        c = max(contours, key=cv2.contourArea)
+
+        ((x, y), radius) = cv2.minEnclosingCircle(c)
+        M = cv2.moments(c)
+        center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+
+        if radius > 10:
+            cv2.circle(frame, (int(x), int(y)), int(radius), (255, 0, 0), 2) 
+            cv2.putText(frame, "Red Ball", (int(x - radius), int(y - radius)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 0), 2)
+            return frame, center, radius
+    return frame, None, 0
+
+close_threshold = 150
+
+try:
+    while True:
+        frame = picamera.capture_array()
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        
+        cv2.imshow('RGB Frame', frame)
+
+        apply_timestamp(frame)
+
+        frame, center, radius = detect_red_ball(frame)
+
+        if center:
+            if radius > close_threshold:
+                print("Ball too close, stopping")
+                stop()
+            elif center[0] < lower_range:
+                print("Ball on the left")
+                leftturn()
+                time.sleep(0.3)
+                stop()
+            elif center[0] > upper_range:
+                print("Ball on the right")
+                rightturn()
+                time.sleep(0.3)
+                stop()
+            else:
+                print("Ball centered, moving forward")
+                forward()
+                time.sleep(0.3)
+                stop()
+        else:
+            print("Ball not detected, stopping")
+            stop()
+
+        cv2.imshow('Frame', frame)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+except KeyboardInterrupt:
+    print("Program interrupted by user")
+
+finally:
+    cv2.destroyAllWindows()
+    picamera.close()
+    GPIO.cleanup()
+```
 
 ### Challenges
 - I am unfamiliar with coding so this whole process was difficult
 - My driver board wasn't getting enough power and it took a while for me to find the solution
-- 
+
+### What's Next
+- Begin my modifications
+- Continue upgrading my portfolio by adding more details
+  
 
 # Second Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-geuLVvwCNM?si=ZdY8bKr4BySobwla&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -64,6 +249,7 @@ while True:
 picam2.stop()
 cv2.destroyAllWindows()
 ```
+
 ### Challenges
 - I had little experience in Python so writing the code was difficult
 - I had to set up a lot of software in order to begin coding so that took a bit of time
