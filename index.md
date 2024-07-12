@@ -210,7 +210,10 @@ finally:
 For my second milestone, I wanted to set up the PiCamera to be able to not only detect a red ball but also put a green box around it. The program works exactly as it sounds. The PiCamera detects the ball by finding colors within a certain range and putting a box around it. Also, my code makes sure that only the largest object fitting those criteria is actually boxed, preventing other red objects from being focused on.
 
 ### Code
-```
+<details>
+  <summary>Click to expand/collapse the Python code</summary>
+  
+```python
 from picamera2 import Picamera2
 import cv2
 import time
