@@ -13,10 +13,7 @@ The Ball Tracker Robot is a self-driving robot that moves based on the objects i
 For my final milestone, I completed the robot which allowed it to track a ball and follow it. Whenever the PiCamera detects a ball, the robot will move toward it unless the ball is too close. If the ball is towards the camera's right, the robot will turn until it faces the ball directly. Also, if the ball rolls out of view from the PiCamera, the robot will automatically turn in the direction the ball was last seen. Also, I removed the 2 of the Ultrasonic Sensors because they make my robot significantly slower.
 
 ### Code
-<details>
-  <summary>Click to expand/collapse the Python code</summary>
-  
-```python
+```
 import time
 import cv2
 import numpy as np
@@ -210,10 +207,7 @@ finally:
 For my second milestone, I wanted to set up the PiCamera to be able to not only detect a red ball but also put a green box around it. The program works exactly as it sounds. The PiCamera detects the ball by finding colors within a certain range and putting a box around it. Also, my code makes sure that only the largest object fitting those criteria is actually boxed, preventing other red objects from being focused on.
 
 ### Code
-<details>
-  <summary>Click to expand/collapse the Python code</summary>
-  
-```python
+```
 from picamera2 import Picamera2
 import cv2
 import time
@@ -252,7 +246,6 @@ while True:
 picam2.stop()
 cv2.destroyAllWindows()
 ```
-
 ### Challenges
 - I had little experience in Python so writing the code was difficult
 - I had to set up a lot of software in order to begin coding so that took a bit of time
