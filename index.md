@@ -10,7 +10,7 @@ The Ball Tracker Robot is a self-driving robot that moves based on the objects i
   
 # Final Milestone
 ### Summary
-For my final milestone, I completed the robot which allowed it to track a ball and follow it. Whenever the PiCamera detects a ball, the robot will move toward it unless the ball is too close. If the ball is towards the camera's right, the robot will turn until it faces the ball directly. Also, if the ball rolls out of view from the PiCamera, the robot will automatically turn in the direction the ball was last seen. Also, I removed 2 of the Ultrasonic Sensors because they make my robot significantly slower.
+For my final milestone, I completed the robot, allowing it to track and follow a ball. Whenever the PiCamera detects a ball, the robot moves toward it unless it is too close. It does so by using the motors on the bottom, which are powered by the driver board. If the ball is towards the camera's right, the robot will turn until it faces it directly. Also, I removed the Ultrasonic Sensors because they make my robot significantly slower.
 
 ### Code
 ```
@@ -195,6 +195,8 @@ finally:
 ### Challenges
 - I am unfamiliar with coding so this whole process was difficult
 - My driver board wasn't getting enough power and it took a while for me to find the solution
+- OBS and RealVNC kept freezing because of the Ultrasonic Sensors so I had to remove them to solve this issue
+- My PiCamera didn't work halfway through this milestone so I had to swap it out for a new one
 
 ### What's Next
 - Begin my modifications
@@ -248,7 +250,7 @@ cv2.destroyAllWindows()
 ```
 ### Challenges
 - I had little experience in Python so writing the code was difficult
-- I had to set up a lot of software in order to begin coding so that took a bit of time
+- I had to set up a lot of software in order to begin coding so that took a bit of time. I didn't know that you had to install OpenCV and update the Raspberry Pi inside the Command Terminal.
 
 ### What's Next
 I hope to begin my milestone 3 as soon as I can which is finishing the rest of the code and getting the robot to automatically detect the red ball and move towards it.
