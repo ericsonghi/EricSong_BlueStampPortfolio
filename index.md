@@ -167,12 +167,12 @@ try:
             elif center[0] > upper_range:
                 print("Ball on the right")
                 rightturn()
-                time.sleep(0.3)
+                time.sleep(0.1)
                 stop()
             else:
                 print("Ball centered, moving forward")
                 forward()
-                time.sleep(0.3)
+                time.sleep(0.1)
                 stop()
         else:
             print("Ball not detected, stopping")
