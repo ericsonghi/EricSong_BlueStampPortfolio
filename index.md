@@ -26,12 +26,10 @@ upper_range = 426
 
 GPIO.setmode(GPIO.BCM)
 
-motor1B = 6  # LEFT motor
+motor1B = 6 # Left Motor
 motor1E = 5
-motor2B = 22  # RIGHT motor
+motor2B = 22  # Right Motor
 motor2E = 23
-
-en_b = 24
 
 GPIO.setup(motor1B, GPIO.OUT)
 GPIO.setup(motor1E, GPIO.OUT)
@@ -41,18 +39,12 @@ GPIO.setup(motor2E, GPIO.OUT)
 GPIO.setup(en_a, GPIO.OUT)
 GPIO.setup(en_b, GPIO.OUT)
 
-power_a = GPIO.PWM(en_a, 180)
-power_a.start(70)
-
-power_b = GPIO.PWM(en_b, 180)
-power_b.start(70)
-
 def forward():
     GPIO.output(motor1B, GPIO.HIGH)
     GPIO.output(motor1E, GPIO.LOW)
     GPIO.output(motor2B, GPIO.HIGH)
     GPIO.output(motor2E, GPIO.LOW)
-
+    
 def reverse():
     GPIO.output(motor1B, GPIO.LOW)
     GPIO.output(motor1E, GPIO.HIGH)
@@ -145,16 +137,18 @@ def detect_red_ball(frame):
 
 close_threshold = 150
 
+last_turn_time = time.time()
+
+last_seen_position = None
+
 try:
     while True:
         frame = picamera.capture_array()
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        
-        cv2.imshow('RGB Frame', frame)
-
         apply_timestamp(frame)
-
         frame, center, radius = detect_red_ball(frame)
+        flipped_frame = cv2.flip(frame, 0)
+        cv2.imshow('Flipped Frame', flipped_frame)
 
         if center:
             if radius > close_threshold:
@@ -162,26 +156,35 @@ try:
                 stop()
             elif center[0] < lower_range:
                 print("Ball on the left")
-                leftturn()
-                time.sleep(0.3)
+                last_seen_position = 'left'
+                rightturn()
+                time.sleep(0.15)
                 stop()
             elif center[0] > upper_range:
                 print("Ball on the right")
-                rightturn()
-                time.sleep(0.1)
+                last_seen_position = 'right'
+                leftturn()
+                time.sleep(0.15)
                 stop()
             else:
                 print("Ball centered, moving forward")
                 forward()
-                time.sleep(0.1)
+                time.sleep(0.3)
                 stop()
         else:
-            print("Ball not detected, stopping")
-            stop()
+            if last_seen_position == 'left':
+                print("Ball not detected, turning left")
+                rightturn()
+                time.sleep(0.08)
+                stop()
+            elif last_seen_position == 'right':
+                print("Ball not detected, turning right")
+                leftturn()
+                time.sleep(0.08)
+                stop()
 
-        cv2.imshow('Frame', frame)
-
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        key = cv2.waitKey(1) & 0xFF
+        if key == ord('q'):
             break
 
 except KeyboardInterrupt:
@@ -292,7 +295,14 @@ In the future, I hope to continue my code and tidy up my robot further.
 # Starter Project
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NTk1sGW9OV4?si=3lOBwtOGQsa74cHu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-My starter project is the Weevil Eyes, which is a light-detecting bug that glows depending on the surrounding light. If the environment is dark, then the lights glow up. For this project, there weren't any big challenges due to the lack of coding and complex steps. Essentially, the bug works by sensing the surrounding light with a sensor at the bottom. If there is light, that signal will go towards the transistor, which is like a switch. When there is light, the transistor will make sure that the LEDs do not light up. However, if there isn't light, the transistor will send electricity to the resistors, which resist electricity to ensure that the LEDs are not fried. And as electricity goes through the resistors and towards the LEDs, the LEDs then illuminate.
+### Summary
+My starter project is the Weevil Eyes, which is a light-detecting bug that glows depending on the surrounding light. Essentially, the bug works by sensing the surrounding light with a sensor at the bottom. If there is light, that signal will go towards the transistor, which is like a switch. When there is light, the transistor will make sure that the LEDs do not light up. However, if there isn't light, the transistor will send electricity to the resistors, which resist electricity to ensure that the LEDs are not fried. And as electricity goes through the resistors and towards the LEDs, the LEDs then illuminate.\+
+
+### Challenges
+For this project, there weren't any big challenges due to the lack of coding and complex steps. I only had one minor inconvenience which was because I didn't have a good soldering iron so it took a while for everything to heat up.
+
+### What's Next
+I hope to start my main project, the Ball Tracking Robot soon.
 
 <!--- # Schematics 
 
